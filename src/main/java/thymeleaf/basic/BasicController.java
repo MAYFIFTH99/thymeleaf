@@ -83,6 +83,12 @@ public class BasicController {
         return "basic/literal";
     }
 
+    @GetMapping("/operation")
+    public String operation(Model model) {
+        model.addAttribute("null", null);
+        model.addAttribute("data", "Spring!");
+        return "basic/operation";
+    }
 
     @Data
     @AllArgsConstructor
