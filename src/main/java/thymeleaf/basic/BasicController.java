@@ -3,6 +3,7 @@ package thymeleaf.basic;
 import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
 @Controller
 @RequestMapping("/basic")
 public class BasicController {
@@ -118,6 +120,14 @@ public class BasicController {
     public String block(Model model) {
         addUsers(model);
         return "basic/block";
+    }
+
+    @GetMapping("/javascript")
+    public String javascript(Model model) {
+        model.addAttribute("user", new User("UserA", 10));
+        addUsers(model);
+
+        return "basic/javascript";
     }
 
     private void addUsers(Model model) {
